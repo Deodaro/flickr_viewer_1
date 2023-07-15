@@ -13,9 +13,9 @@ class FlickrViewerRepository {
     //     (response.data as Map<String, dynamic>)['photos']['photo'].toList();
     final data = response.data as Map<String, dynamic>;
     final photoData = data['photos'] as Map<String, dynamic>;
-    // final photoList = photosData['photo'].toList();
-    final photoList = photoData['photo'] as List;
-    final theList = photoList.map((item) {
+    // final imageList = photosData['photo'].toList();
+    final imageList = photoData['photo'] as List;
+    final theList = imageList.map((item) {
       debugPrint(item['farm'].toString());
       debugPrint(item['server'].toString());
       return Photo(
@@ -24,7 +24,7 @@ class FlickrViewerRepository {
             'https://farm${item['farm']}.staticflickr.com/${item['server']}/${item['id']}_${item['secret']}.jpg',
       );
     }).toList();
-    // final photoList = photosData
+    // final imageList = photosData
     //     .map((item) => Photo(
     //           title: item.title,
     //         ))
