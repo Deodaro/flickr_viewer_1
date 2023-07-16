@@ -1,4 +1,5 @@
 // import 'package:flickr_viewer/widgets/image_card.dart';
+// import 'package:flickr_viewer/block/bloc/f_viewer_bloc.dart';
 import 'package:flickr_viewer/block/bloc/f_viewer_bloc.dart';
 import 'package:flickr_viewer/repositories/flickr_viewer_repository.dart';
 import 'package:flickr_viewer/repositories/models/photo.dart';
@@ -21,6 +22,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
   @override
   void initState() {
     _loadData();
+    _fViewerBlock.add(LoadData());
     super.initState();
   }
 
@@ -46,7 +48,6 @@ class _GalleryScreenState extends State<GalleryScreen> {
 
   Future<void> _loadData() async {
     _imageList = await FlickrViewerRepository().getImages();
-    debugPrint(_imageList[0].toString());
     setState(() {});
   }
 }

@@ -1,5 +1,6 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:meta/meta.dart';
 
 part 'f_viewer_event.dart';
 part 'f_viewer_state.dart';
@@ -8,7 +9,7 @@ class FViewerBloc extends Bloc<FViewerEvent, FViewerState> {
   FViewerBloc() : super(FViewerInitial()) {
     //  регистрация обработчика ивента
     on<LoadData>((event, emit) {
-      print('data loading...');
+      debugPrint('data loading...');
     });
   }
 }
