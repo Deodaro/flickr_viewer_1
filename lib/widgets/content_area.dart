@@ -12,26 +12,26 @@ class ContentArea extends StatelessWidget {
   final List<Photo> imageList;
   final _columnsNumber = 2;
 
-  // @override
-  // State<ContentArea> createState() => _ContentAreaState();
-
+  @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Scaffold(
-        body: (imageList == null)
-            ? const Center(child: CircularProgressIndicator())
-            : GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: _columnsNumber,
-                ),
-                itemCount: imageList.length,
-                // for (int i = 0; i < _imageList!.length; i++)
-                itemBuilder: (context, index) {
-                  return ImageCard(
-                    photo: imageList[index],
-                  );
-                },
-              ),
+        body:
+            // body: (imageList == null)
+            // ? const Center(child: CircularProgressIndicator())
+            // : GridView.builder(
+            GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: _columnsNumber,
+          ),
+          itemCount: imageList.length,
+          // for (int i = 0; i < _imageList!.length; i++)
+          itemBuilder: (context, index) {
+            return ImageCard(
+              photo: imageList[index],
+            );
+          },
+        ),
       ),
     );
   }
