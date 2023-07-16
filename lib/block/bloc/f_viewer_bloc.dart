@@ -11,7 +11,6 @@ class FViewerBloc extends Bloc<FViewerEvent, FViewerState> {
   final ImagesRepository _imagesRepository = ImagesRepository();
 
   FViewerBloc() : super(FViewerInitial()) {
-    //  регистрация обработчика ивента
     on<LoadData>((event, emit) async {
       try {
         final imageList = await _imagesRepository.getImages();

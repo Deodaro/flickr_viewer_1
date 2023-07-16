@@ -36,17 +36,18 @@ class _GalleryScreenState extends State<GalleryScreen> {
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: const Text('Gallery'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: SearchLine(),
+                );
+              },
+            )
+          ],
         ),
-        // body: Column(
-        //   children: [
-        //     const SearchPanel(),
-        //     Expanded(
-        //       child: ContentArea(
-        //         imageList: _imageList,
-        //       ),
-        //     ),
-        //   ],
-        // ),
         body: BlocBuilder<FViewerBloc, FViewerState>(
           bloc: _fViewerBloc,
           builder: (context, state) {
@@ -57,8 +58,11 @@ class _GalleryScreenState extends State<GalleryScreen> {
                 ),
                 itemCount: state.imageList.length,
                 itemBuilder: (context, index) {
-                  return ImageCard(
-                    photo: state.imageList[index],
+                  return Container(
+                    padding: const EdgeInsets.all(8),
+                    child: ImageCard(
+                      photo: state.imageList[index],
+                    ),
                   );
                 },
               );
@@ -74,5 +78,69 @@ class _GalleryScreenState extends State<GalleryScreen> {
             );
           },
         ));
+  }
+}
+
+class SearchLine extends SearchDelegate {
+  List<String> keywords = [];
+
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: const Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+        },
+      ),
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () {
+          close(context, null);
+        });
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var item in keywords) {
+      if (item.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(item);
+      }
+    }
+    // должен возникнуть список подсказок?
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var item in keywords) {
+      if (item.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(item);
+      }
+    }
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+        );
+      },
+    );
   }
 }
