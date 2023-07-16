@@ -2,7 +2,8 @@ import 'package:flickr_viewer/repositories/models/photo.dart';
 import 'package:dio/dio.dart';
 // import 'package:flutter/material.dart';
 
-class FlickrViewerRepository {
+class ImagesRepository {
+  // добавить номер страницы в параметр
   Future<List<Photo>> getImages() async {
     const testUrl =
         'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=cdd6dc75933ebb336809503bd381e5ea&user_id=198721410%40N07&per_page=10&format=json&nojsoncallback=1';
