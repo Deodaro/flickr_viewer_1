@@ -113,11 +113,11 @@ class SearchLine extends SearchDelegate {
         matchQuery.add(item);
       }
     }
-    // должен возникнуть список подсказок?
+    // todo проверить
     return ListView.builder(
       itemCount: matchQuery.length,
       itemBuilder: (context, index) {
-        var result = matchQuery[index];
+        String result = matchQuery[index];
         return ListTile(
           title: Text(result),
         );
@@ -136,7 +136,7 @@ class SearchLine extends SearchDelegate {
     return ListView.builder(
       itemCount: matchQuery.length,
       itemBuilder: (context, index) {
-        var result = matchQuery[index];
+        String result = matchQuery[index];
         return ListTile(
           title: Text(result),
         );
