@@ -1,23 +1,39 @@
 part of 'f_viewer_bloc.dart';
 
-class FViewerState {}
+class FViewerState {
+  final List<Photo> images;
+  // final bool isLoading;
 
-class FViewerInitial extends FViewerState {}
-
-class FViewerDataLoading extends FViewerState {}
-
-class FViewerDataLoaded extends FViewerState {
-  FViewerDataLoaded({
-    required this.imageList,
+  FViewerState({
+    this.images = const [],
+    // this.isLoading = false,
   });
-
-  final List<Photo> imageList;
 }
 
-class FViewerDataLoadedFailure extends FViewerState {
-  FViewerDataLoadedFailure({
-    required this.error,
-  });
+// class FViewerInitialState extends FViewerState {}
 
-  final Object? error;
-}
+// class DataLoadingState extends FViewerState {}
+
+// class FViewerDataLoaded extends FViewerState {
+//   FViewerDataLoaded({
+//     required this.imageList,
+//   });
+
+//   final List<Photo> imageList;
+// }
+
+// class DataLoadedState extends FViewerState {
+//   DataLoadedState({
+//     required this.imagesList,
+//   });
+
+//   final List<Photo> imagesList;
+// }
+
+// class FViewerDataLoadedFailure extends FViewerState {
+//   FViewerDataLoadedFailure({
+//     required this.error,
+//   });
+
+//   final Object? error;
+// }

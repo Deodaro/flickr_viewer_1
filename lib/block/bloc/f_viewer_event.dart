@@ -1,5 +1,13 @@
 part of 'f_viewer_bloc.dart';
 
-class FViewerEvent {}
+abstract class FViewerEvent {}
 
-class LoadData extends FViewerEvent {}
+// class LoadDataEvent extends FViewerEvent {}
+
+// class LoadInitialDataEvent extends FViewerEvent {}
+
+class SearchImagesEvent extends FViewerEvent {
+  final String query;
+
+  SearchImagesEvent(this.query);
+}
