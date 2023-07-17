@@ -1,6 +1,7 @@
 // import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flickr_viewer/repositories/models/photo.dart';
+import 'package:flickr_viewer/screens/full_view_screen.dart';
 import 'package:flutter/material.dart';
 
 class ImageCard extends StatelessWidget {
@@ -15,9 +16,10 @@ class ImageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(
-          '/info',
-          arguments: photo,
+        Navigator.pushNamed(
+          context,
+          FullViewScreen.routeName,
+          arguments: ScreenArguments(photo.url),
         );
       },
       child: CachedNetworkImage(

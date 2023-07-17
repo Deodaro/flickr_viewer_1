@@ -2,11 +2,13 @@ part of 'f_viewer_bloc.dart';
 
 class FViewerState {
   final List<Photo> images;
-  // final bool isLoading;
+  final bool isShowSettings;
+  final double columnsCount;
 
   FViewerState({
     this.images = const [],
-    // this.isLoading = false,
+    this.isShowSettings = false,
+    this.columnsCount = 1,
   });
 }
 

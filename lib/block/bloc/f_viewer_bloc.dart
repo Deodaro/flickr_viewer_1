@@ -21,6 +21,19 @@ class FViewerBloc extends Bloc<FViewerEvent, FViewerState> {
   FViewerBloc() : super(FViewerState()) {
     // on<LoadInitialDataEvent>(_onInit);
     on<SearchImagesEvent>(_onSearch);
+
+    on<ShowSettingsEvent>(
+        (ShowSettingsEvent event, Emitter<FViewerState> emit) {
+      if (state.isShowSettings == true) {
+        emit(FViewerState(isShowSettings: false));
+      } else {
+        emit(FViewerState(isShowSettings: true));
+      }
+    });
+
+    on<SetColunmsEvent>((SetColunmsEvent event, Emitter<FViewerState> emit) {
+      emit(FViewerState(columnsCount: event.value));
+    });
   }
 
   final _httpClient = Dio();
@@ -49,6 +62,8 @@ class FViewerBloc extends Bloc<FViewerEvent, FViewerState> {
 
     emit(FViewerState(images: result));
   }
+
+  // _onToggleSettings() {}
 }
 
 // class FViewerBloc extends Bloc<FViewerEvent, FViewerState> {

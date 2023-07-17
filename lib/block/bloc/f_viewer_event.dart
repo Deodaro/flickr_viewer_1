@@ -11,3 +11,11 @@ class SearchImagesEvent extends FViewerEvent {
 
   SearchImagesEvent(this.query);
 }
+
+class ShowSettingsEvent extends FViewerEvent {}
+
+class SetColunmsEvent extends FViewerEvent {
+  final double value;
+
+  SetColunmsEvent(this.value);
+}
