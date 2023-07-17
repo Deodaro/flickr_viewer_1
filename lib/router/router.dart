@@ -4,6 +4,6 @@ import 'package:flickr_viewer/screens/favorites_screen.dart';
 
 final routes = {
   '/': (context) => const GalleryScreen(),
-  FullViewScreen.routeName: (context) => const FullViewScreen(),
+  '/full': (context) => const FullViewScreen(),
   '/favorites': (context) => const FavoritesScreen(),
 };

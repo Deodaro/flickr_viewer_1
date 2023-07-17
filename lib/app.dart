@@ -13,6 +13,7 @@ class FlickrViewerApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => FViewerBloc(),
+          lazy: false,
         ),
       ],
       child: MaterialApp(

@@ -8,14 +8,10 @@ class ColumnsCountSlider extends StatefulWidget {
 }
 
 class _ColumnsCountSliderState extends State<ColumnsCountSlider> {
-// final columnsCount;
   double _currentSliderValue = 2;
 
   @override
   Widget build(BuildContext context) {
-    // final sliderValue =
-    // context.select((FViewerBloc bloc) => bloc.state.columnsCount);
-
     return Slider(
       value: _currentSliderValue,
       min: 1,
@@ -24,9 +20,7 @@ class _ColumnsCountSliderState extends State<ColumnsCountSlider> {
       onChanged: (double value) {
         setState(() {
           _currentSliderValue = value;
-          // context.read<FViewerBloc>().add(SetColunmsEvent(value));
         });
-        // context.read<FViewerBloc>().add(SetColunmsEvent(value));
       },
     );
   }

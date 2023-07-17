@@ -33,7 +33,9 @@ class FavoritesScreen extends StatelessWidget {
                 );
               },
             )
-          : const Center(child: Text('+')),
+          : const Center(
+              child: Text('No Favorites yet...'),
+            ),
     );
   }
 }

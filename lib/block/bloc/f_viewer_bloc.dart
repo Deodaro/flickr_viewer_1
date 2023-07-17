@@ -1,21 +1,11 @@
 import 'package:dio/dio.dart';
-// import 'package:flickr_viewer/repositories/images_repository.dart';
 import 'package:flickr_viewer/repositories/models/photo.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:meta/meta.dart';
 
 part 'f_viewer_event.dart';
 part 'f_viewer_state.dart';
 
 const apiUrl = 'https://www.flickr.com/services/rest/';
-
-// EventTransformer<E> debounceDroppable<E>(Duration duration) {
-//   return (events, mapper) {
-//     return droppable<E>().call(events.debounce(duration), mapper);
-//   };
-// }
 
 class FViewerBloc extends Bloc<FViewerEvent, FViewerState> {
   FViewerBloc() : super(FViewerState()) {
@@ -62,41 +52,4 @@ class FViewerBloc extends Bloc<FViewerEvent, FViewerState> {
 
     emit(FViewerState(images: result));
   }
-
-  // _onToggleSettings() {}
 }
-
-// class FViewerBloc extends Bloc<FViewerEvent, FViewerState> {
-//   FViewerBloc({required ImagesRepository imagesRepository})
-//       : super(FViewerInitialState()) {
-//     on<SearchImagesEvent>(_onSearch);
-    // on<DataLoadedState
-  // }
-
-  // final ImagesRepository _imagesRepository = ImagesRepository();
-  // final ImagesRepository _imagesRepository;
-  // FViewerBloc({required ImagesRepository imagesRepository})
-  // : _imagesRepository = imagesRepository,
-  // super(FViewerState()) {
-  // super(FViewerInitial()) {
-  // FViewerBloc() : super(FViewerState()) {
-  // on<LoadData>((event, emit) async {
-  //   try {
-  //     final imageList = await _imagesRepository.getImages();
-  //     emit(FViewerDataLoaded(imageList: imageList));
-  //   } catch (e) {
-  //     emit(FViewerDataLoadedFailure(error: e));
-  //   }
-  // });
-
-// }
-
-  // _onSearch(SearchImagesEvent event, Emitter<FViewerState> emit) async {
-  //   // emit(DataLoadingState());
-  //   final imagesList = await _imagesRepository.getImages();
-  //   emit(DataLoadedState(imagesList: imagesList));
-  // }
-// }
-
-  // late final ImagesRepository _imagesRepository;
-// }

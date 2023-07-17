@@ -8,7 +8,6 @@ final darkTheme = ThemeData(
   useMaterial3: true,
   textTheme: const TextTheme(
     bodyMedium: TextStyle(
-      // color: Colors.white,
       fontWeight: FontWeight.normal,
       fontSize: 20,
     ),

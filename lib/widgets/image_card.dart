@@ -1,4 +1,3 @@
-// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flickr_viewer/repositories/models/photo.dart';
 import 'package:flickr_viewer/screens/full_view_screen.dart';

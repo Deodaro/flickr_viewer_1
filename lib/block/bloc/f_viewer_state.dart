@@ -8,34 +8,6 @@ class FViewerState {
   FViewerState({
     this.images = const [],
     this.isShowSettings = false,
-    this.columnsCount = 1,
+    this.columnsCount = 2,
   });
 }
-
-// class FViewerInitialState extends FViewerState {}
-
-// class DataLoadingState extends FViewerState {}
-
-// class FViewerDataLoaded extends FViewerState {
-//   FViewerDataLoaded({
-//     required this.imageList,
-//   });
-
-//   final List<Photo> imageList;
-// }
-
-// class DataLoadedState extends FViewerState {
-//   DataLoadedState({
-//     required this.imagesList,
-//   });
-
-//   final List<Photo> imagesList;
-// }
-
-// class FViewerDataLoadedFailure extends FViewerState {
-//   FViewerDataLoadedFailure({
-//     required this.error,
-//   });
-
-//   final Object? error;
-// }
