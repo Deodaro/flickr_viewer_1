@@ -39,7 +39,6 @@ class GalleryScreen extends StatelessWidget {
               },
               icon: const Icon(Icons.bookmarks_outlined)),
         ],
-        // flexibleSpace: Container(child: Text(')))))0')),
         bottom: (isShowMenu == true)
             ? PreferredSize(
                 preferredSize: const Size.fromHeight(48.0),

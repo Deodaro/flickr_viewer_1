@@ -9,7 +9,6 @@ const apiUrl = 'https://www.flickr.com/services/rest/';
 
 class FViewerBloc extends Bloc<FViewerEvent, FViewerState> {
   FViewerBloc() : super(FViewerState()) {
-    // on<LoadInitialDataEvent>(_onInit);
     on<SearchImagesEvent>(_onSearch);
 
     on<ShowSettingsEvent>(
