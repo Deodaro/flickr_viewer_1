@@ -21,6 +21,7 @@ class FavsBloc extends Bloc<FavsEvent, FavsState> {
 
     on<FavAdded>((FavAdded event, emit) async {
       _favsRepo.addFavImage(event.favImage);
+      // emit(FavAdded(favImage))
       add(FavsLoading());
     });
 

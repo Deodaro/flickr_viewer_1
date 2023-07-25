@@ -1,5 +1,7 @@
+import 'package:flickr_viewer/favs/bloc/favs_bloc.dart';
 import 'package:flickr_viewer/gallery/bloc/gallery_bloc.dart';
 import 'package:flickr_viewer/models/image_model.dart';
+import 'package:flickr_viewer/repositories/favs_repository.dart';
 import 'package:flickr_viewer/screens/full_view_screen.dart';
 import 'package:flickr_viewer/widgets/images_greed.dart';
 import 'package:flutter/material.dart';
@@ -17,22 +19,40 @@ class FavsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Favorites'),
       ),
-      body: BlocBuilder<GalleryBloc, GalleryState>(
-        // future: DBProvider.db.getAllFavImages(),
-        builder: (BuildContext context, state) {
-          // if (snapshot.hasData) {
-          if (state is GalleryLoadSuccess) {
-            return GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                // itemCount: snapshot.data?.length,
-                itemBuilder: (BuildContext context, int index) {
-                  // ImageModel image = snapshot.data![index];
-                  ImageModel image = state.images[index];
-                  return GestureDetector(
-                    child: Image.network(image.fullUrl),
-                    onTap: () {
+      body: BlocProvider(
+        create: (context) =>
+        FavsBloc(
+            RepositoryProvider.of<FavsRepository>(context))
+          ..add(FavsLoading()),
+        child: BlocBuilder<FavsBloc, FavsState>(
+          builder: (context, state) {
+            if (state is AllFavsLoadSuccess) {
+              return ImagesGreed(state.favImages);
+            }
+
+            return Container();
+          },
+        ),
+      ),
+    );
+  }
+}
+
+
+      // BlocBuilder<GalleryBloc, GalleryState>(
+      //   builder: (BuildContext context, state) {
+      //     if (state is GalleryLoadSuccess) {
+      //       return GridView.builder(
+      //           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      //             crossAxisCount: 2,
+      //           ),
+      //           // itemCount: snapshot.data?.length,
+      //           itemBuilder: (BuildContext context, int index) {
+      //             // ImageModel image = snapshot.data![index];
+      //             ImageModel image = state.images[index];
+      //             return GestureDetector(
+      //               child: Image.network(image.fullUrl),
+      //               onTap: () {
                       // Navigator.of(context)
                       //     .push(MaterialPageRoute<FullViewScreen>(builder: (context) {
                       //   return BlocProvider.value(
@@ -41,11 +61,11 @@ class FavsPage extends StatelessWidget {
                       //     child: FullViewScreen(image: image),
                       //   );
                       // }));
-                    },
-                  );
-                }
-            );
-          }
+          //           },
+          //         );
+          //       }
+          //   );
+          // }
             // return Expanded(
             //   child: ImagesGreed(
             //     imageList: snapshot.data!,
@@ -60,9 +80,9 @@ class FavsPage extends StatelessWidget {
           //     ),
           //   );
           // }
-          return Center(child: CircularProgressIndicator());
-        },
-      ),
-    );
-  }
-}
+          // return Center(child: CircularProgressIndicator());
+        // },
+      // ),
+    // );
+//   }
+// }

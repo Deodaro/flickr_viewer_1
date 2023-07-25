@@ -81,7 +81,7 @@ class ImageModel extends HiveObject {
   @HiveField(2)
   final String title;
   @HiveField(3)
-  final bool isFav;
+  bool isFav = false;
 
   ImageModel(this.id, this.fullUrl, this.title, this.isFav);
 }

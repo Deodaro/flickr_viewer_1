@@ -1,66 +1,57 @@
+import 'package:flickr_viewer/favs/bloc/favs_bloc.dart';
 import 'package:flickr_viewer/models/image_model.dart';
+import 'package:flickr_viewer/repositories/favs_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FullViewScreen extends StatelessWidget {
   const FullViewScreen({Key? key, required this.image}) : super(key: key);
-  final favButtonController = ();
+
+  // final favButtonController = ();
 
   final ImageModel image;
 
   @override
   Widget build(BuildContext context) {
-    // final FavsBloc favsBloc = BlocProvider.of<FavsBloc>(context);
-
-    // return BlocBuilder<FavsBloc, FavsState>(
-      // bloc: favsBloc,
-      // state: fav
-      // builder: (BuildContext context, state) {
-        // state.favImages;
-
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            iconTheme: const IconThemeData(color: Colors.white),
-          ),
-          body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                // image:
-                image: NetworkImage(image.fullUrl),
-                fit: BoxFit.contain,
-                // fit: BoxFit.cover,
+    return BlocProvider(
+      create: (context) => FavsBloc(RepositoryProvider.of<FavsRepository>(context)),
+      child: BlocBuilder<FavsBloc, FavsState>(
+        builder: (context, state) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              iconTheme: const IconThemeData(color: Colors.white),
+            ),
+            body: Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  // image:
+                  image: NetworkImage(image.fullUrl),
+                  fit: BoxFit.contain,
+                  // fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-        //   floatingActionButton: FloatingActionButton(
-        //     // child: (state.favImages && state.fa),
-        //     child: const Icon(Icons.favorite_border_outlined),
-        //     onPressed: () {
-        //       // favsBloc.addFavImage(image);
-        //       // context.read<FavsBloc>().add(FavAdded(favImage: image));
-        //     },
-        // ),
-          floatingActionButton: IconButton(
-            icon: const Icon(Icons.favorite_border_outlined),
-            selectedIcon: const Icon(Icons.favorite),
-            isSelected: false,
-            onPressed: () {},
-          )
-          // floatingActionButtonLocation: ,
-          // ) : FloatingActionButton(
-          //   child: (state is FavsLoadSuccess)
-          //       ? const Icon(Icons.favorite)
-          //       : const Icon(Icons.favorite_border_outlined),
-          //   onPressed: () {
-          //     // favsBloc.deleteFavImage();
-          //     // context.read<FavsBloc>().add(FavRemoved(favImage: image));
-          //   },
-          // ),
-        );
-      }
-    // );
-  // }
+            floatingActionButton: IconButton.outlined(
+              icon: const Icon(Icons.favorite_border_outlined),
+              selectedIcon: const Icon(Icons.g_mobiledata),
+              isSelected: image.isFav == true ? true : false,
+              onPressed: () {
+                if (image.isFav == false) {
+                  BlocProvider.of<FavsBloc>(context).add(FavAdded(image));
+                  // context.read<FavsBloc>().add(FavAdded(image));
+                } else {
+                  BlocProvider.of<FavsBloc>(context).add(FavRemoved(image.id));
+                  // context.read<FavsBloc>().add(FavRemoved(image.id));
+                }
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
 }

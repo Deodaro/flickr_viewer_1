@@ -23,7 +23,7 @@ class GalleryRepository {
 
     return (response.data['photos']?['photo'] as List)
         .map((json) => ImageModel(
-            json['id'],
+            int.parse(json['id']),
             'https://farm${json['farm']}.staticflickr.com/${json['server']}/${json['id']}_${json['secret']}.jpg',
             json['title'],
             false))

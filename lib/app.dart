@@ -3,6 +3,7 @@
 // import 'package:flickr_viewer/repositories/images_repository/images_repository.dart';
 // import 'package:flickr_viewer/screens/gallery_screen.dart';
 // import 'package:flickr_viewer/bloc/favs/favs_bloc.dart';
+import 'package:flickr_viewer/favs/bloc/favs_bloc.dart';
 import 'package:flickr_viewer/gallery/bloc/gallery_bloc.dart';
 import 'package:flickr_viewer/repositories/favs_repository.dart';
 import 'package:flickr_viewer/repositories/gallery_repository.dart';
@@ -97,6 +98,11 @@ class App extends StatelessWidget {
             BlocProvider<GalleryBloc>(
               create: (context) => GalleryBloc(
                 context.read<GalleryRepository>(),
+              ),
+            ),
+            BlocProvider<FavsBloc>(
+              create: (context) => FavsBloc(
+                context.read<FavsRepository>(),
               ),
             ),
           ],
