@@ -2,8 +2,8 @@
 // import 'package:flickr_viewer/bloc/f_viewer_event.dart';
 // import 'package:flickr_viewer/services/images_repository.dart';
 // import 'package:flickr_viewer/bloc/favs/favs_bloc.dart';
-import 'package:flickr_viewer/bloc/gallery/gallery_bloc.dart';
-import 'package:flickr_viewer/screens/favs_page.dart';
+import 'package:flickr_viewer/favs/favs_page.dart';
+import 'package:flickr_viewer/gallery/bloc/gallery_bloc.dart';
 import 'package:flickr_viewer/widgets/images_greed.dart';
 import 'package:flickr_viewer/widgets/search_panel.dart';
 import 'package:flutter/material.dart';

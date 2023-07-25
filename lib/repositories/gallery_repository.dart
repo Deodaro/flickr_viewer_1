@@ -1,5 +1,8 @@
+// import 'package:meta/meta.dart';
+// import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flickr_viewer/models/image_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GalleryRepository {
   final apiUrl = 'https://www.flickr.com/services/rest/';
@@ -14,8 +17,16 @@ class GalleryRepository {
       'nojsoncallback': 1
     });
 
+    // return (response.data['photos']?['photo'] as List)
+    //     .map((json) => ImageModel.fromJson(json))
+    //     .toList();
+
     return (response.data['photos']?['photo'] as List)
-        .map((json) => ImageModel.fromJson(json))
+        .map((json) => ImageModel(
+            json['id'],
+            'https://farm${json['farm']}.staticflickr.com/${json['server']}/${json['id']}_${json['secret']}.jpg',
+            json['title'],
+            false))
         .toList();
   }
 }

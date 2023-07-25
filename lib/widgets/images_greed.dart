@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 // import 'package:flickr_viewer/bloc/favs/favs_bloc.dart';
-import 'package:flickr_viewer/bloc/gallery/gallery_bloc.dart';
+import 'package:flickr_viewer/gallery/bloc/gallery_bloc.dart';
 import 'package:flickr_viewer/models/image_model.dart';
 import 'package:flickr_viewer/screens/full_view_screen.dart';
 import 'package:flutter/material.dart';

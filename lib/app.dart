@@ -3,16 +3,15 @@
 // import 'package:flickr_viewer/repositories/images_repository/images_repository.dart';
 // import 'package:flickr_viewer/screens/gallery_screen.dart';
 // import 'package:flickr_viewer/bloc/favs/favs_bloc.dart';
-import 'package:flickr_viewer/bloc/gallery/gallery_bloc.dart';
+import 'package:flickr_viewer/gallery/bloc/gallery_bloc.dart';
 import 'package:flickr_viewer/repositories/favs_repository.dart';
 import 'package:flickr_viewer/repositories/gallery_repository.dart';
-import 'package:flickr_viewer/screens/home_page.dart';
+import 'package:flickr_viewer/gallery/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:hive/hive.dart';
 // import 'package:flickr_viewer/router/router.dart';
 import 'package:flickr_viewer/theme/theme.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
 
 // class FlickrViewerApp extends StatelessWidget {
 //   const FlickrViewerApp({Key? key}) : super(key: key);
@@ -96,15 +95,10 @@ class App extends StatelessWidget {
         child: MultiBlocProvider(
           providers: [
             BlocProvider<GalleryBloc>(
-              create: (BuildContext context) => GalleryBloc(
-                galleryRepository: context.read<GalleryRepository>(),
+              create: (context) => GalleryBloc(
+                context.read<GalleryRepository>(),
               ),
             ),
-            // BlocProvider<FavsBloc>(
-            //   create: (BuildContext context) => FavsBloc(
-            //     // favsRepository: context.read<FavsRepository>(),
-            //   ),
-            // ),
           ],
           child: MaterialApp(
             title: 'Flickr Viewer',

@@ -1,10 +1,10 @@
 import 'package:flickr_viewer/models/image_model.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flickr_viewer/bloc/favs/favs_bloc.dart';
 
 class FullViewScreen extends StatelessWidget {
   const FullViewScreen({Key? key, required this.image}) : super(key: key);
+  final favButtonController = ();
 
   final ImageModel image;
 
@@ -35,14 +35,21 @@ class FullViewScreen extends StatelessWidget {
               ),
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            // child: (state.favImages && state.fa),
-            child: const Icon(Icons.favorite_border_outlined),
-            onPressed: () {
-              favsBloc.addFavImage(image);
-              // context.read<FavsBloc>().add(FavAdded(favImage: image));
-            },
-        ),
+        //   floatingActionButton: FloatingActionButton(
+        //     // child: (state.favImages && state.fa),
+        //     child: const Icon(Icons.favorite_border_outlined),
+        //     onPressed: () {
+        //       // favsBloc.addFavImage(image);
+        //       // context.read<FavsBloc>().add(FavAdded(favImage: image));
+        //     },
+        // ),
+          floatingActionButton: IconButton(
+            icon: const Icon(Icons.favorite_border_outlined),
+            selectedIcon: const Icon(Icons.favorite),
+            isSelected: false,
+            onPressed: () {},
+          )
+          // floatingActionButtonLocation: ,
           // ) : FloatingActionButton(
           //   child: (state is FavsLoadSuccess)
           //       ? const Icon(Icons.favorite)

@@ -1,6 +1,6 @@
 // import 'package:flickr_viewer/bloc/f_viewer_bloc.dart';
 // import 'package:flickr_viewer/bloc/f_viewer_event.dart';
-import 'package:flickr_viewer/bloc/gallery/gallery_bloc.dart';
+import 'package:flickr_viewer/gallery/bloc/gallery_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
