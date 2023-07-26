@@ -4,27 +4,30 @@ abstract class GalleryEvent extends Equatable {
   GalleryEvent();
 }
 
-// class ImagesLoading extends GalleryEvent {}
-//
-// class GalleryInitial extends GalleryEvent {
-//   @override
-//   List<Object?> get props => [];
-// }
-
-class SearchStarted extends GalleryEvent{
+class SearchStartEvent extends GalleryEvent {
   final String query;
 
-  SearchStarted(this.query);
+  SearchStartEvent(this.query);
 
   @override
   List<Object?> get props => [query];
 }
 
-class ImagesLoaded extends GalleryEvent {
-  // final List<ImageModel> images;
-  //
-  // ImagesLoaded
-  //
+// class ImagesLoaded extends GalleryEvent {
+//   @override
+//   List<Object?> get props => [];
+// }
+
+// class ToggleGridEvent extends GalleryEvent {
+//   final int value;
+//
+//   ToggleGridEvent(this.value);
+//
+//   @override
+//   List<Object?> get props => [value];
+// }
+
+class RegisterServicesEvent extends GalleryEvent {
   @override
   List<Object?> get props => [];
 }

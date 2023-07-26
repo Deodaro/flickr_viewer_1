@@ -1,10 +1,18 @@
 part of './gallery_bloc.dart';
 
-abstract class GalleryState extends Equatable {}
+abstract class GalleryState extends Equatable {
+  GalleryState();
+}
 
 class GalleryInitial extends GalleryState {
+  final String? error;
+
+  GalleryInitial({this.error});
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [error];
+  // @override
+  // List<Object?> get props => [];
 }
 
 class GalleryLoadInProgress extends GalleryState {
@@ -12,17 +20,32 @@ class GalleryLoadInProgress extends GalleryState {
   List<Object?> get props => [];
 }
 
-class GalleryLoadSuccess extends GalleryState {
-  final List<ImageModel> images;
+class GalleryLoadSuccessState extends GalleryState {
+  final List<ImageModelBase> images;
 
-  GalleryLoadSuccess(this.images);
+  GalleryLoadSuccessState(this.images);
+
   @override
   List<Object?> get props => [images];
 }
 
+// TODO delete?
 class GalleryLoadFailure extends GalleryState {
   @override
   List<Object?> get props => [];
 }
 
+// class GridCount extends GalleryState {
+//   final int count;
+//
+//   GridCount(this.count);
+//
+//   @override
+//   List<Object?> get props => [count];
+// }
 
+class RegisteringServicesState extends GalleryState {
+  @override
+  List<Object?> get props => [];
+
+}

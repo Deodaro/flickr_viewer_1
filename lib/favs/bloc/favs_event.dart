@@ -3,9 +3,14 @@ part of './favs_bloc.dart';
 abstract class FavsEvent extends Equatable {
   const FavsEvent();
 }
-// = login
-class FavsLoading extends FavsEvent {
-  FavsLoading();
+
+class RegistrationEvent extends FavsEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+class FavsLoadingEvent extends FavsEvent {
+  const FavsLoadingEvent();
 
   @override
   List<Object?> get props => [];
@@ -16,10 +21,10 @@ class FavsLoading extends FavsEvent {
 //   List<Object?> get props => [];
 // }
 
-class FavAdded extends FavsEvent {
-  ImageModel favImage;
+class FavAddedEvent extends FavsEvent {
+  ImageModelBase favImage;
 
-  FavAdded(this.favImage);
+  FavAddedEvent(this.favImage);
 
   @override
   List<Object?> get props => [favImage];

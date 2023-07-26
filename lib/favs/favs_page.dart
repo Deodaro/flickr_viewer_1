@@ -1,9 +1,6 @@
 import 'package:flickr_viewer/favs/bloc/favs_bloc.dart';
-import 'package:flickr_viewer/gallery/bloc/gallery_bloc.dart';
-import 'package:flickr_viewer/models/image_model.dart';
 import 'package:flickr_viewer/repositories/favs_repository.dart';
-import 'package:flickr_viewer/screens/full_view_screen.dart';
-import 'package:flickr_viewer/widgets/images_greed.dart';
+import 'package:flickr_viewer/widgets/images_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,22 +9,20 @@ class FavsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final FavsBloc favsBloc = BlocProvider.of<FavsBloc>(context);
-    // favsBloc.getAllFavImages();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Favorites'),
       ),
       body: BlocProvider(
         create: (context) =>
-        FavsBloc(
-            RepositoryProvider.of<FavsRepository>(context))
-          ..add(FavsLoading()),
+        FavsBloc(RepositoryProvider.of<FavsRepository>(context)),
         child: BlocBuilder<FavsBloc, FavsState>(
           builder: (context, state) {
-            if (state is AllFavsLoadSuccess) {
-              return ImagesGreed(state.favImages);
+            if (state is AllFavsLoading || state is RegistrationState) {
+              return const CircularProgressIndicator();
+            }
+            if (state is AllFavsLoadSuccess && state.favImages.isNotEmpty) {
+              return ImagesGrid(imageList: state.favImages);
             }
 
             return Container();
@@ -41,7 +36,7 @@ class FavsPage extends StatelessWidget {
 
       // BlocBuilder<GalleryBloc, GalleryState>(
       //   builder: (BuildContext context, state) {
-      //     if (state is GalleryLoadSuccess) {
+      //     if (state is GalleryLoadSuccessState) {
       //       return GridView.builder(
       //           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
       //             crossAxisCount: 2,
@@ -67,7 +62,7 @@ class FavsPage extends StatelessWidget {
           //   );
           // }
             // return Expanded(
-            //   child: ImagesGreed(
+            //   child: ImagesGrid(
             //     imageList: snapshot.data!,
             //   ),
             // );

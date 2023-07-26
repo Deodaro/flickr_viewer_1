@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 final darkTheme = ThemeData(
+  useMaterial3: true,
+  // primarySwatch: ColorSwatch()
   colorScheme: ColorScheme.fromSeed(
-    seedColor: Colors.deepOrange,
+    // prmary: Colors.blueGrey,i
+    seedColor: Colors.blueGrey,
+    brightness: Brightness.dark,
   ),
   scaffoldBackgroundColor: const Color.fromARGB(255, 54, 54, 54),
-  useMaterial3: true,
   textTheme: const TextTheme(
     bodyMedium: TextStyle(
       fontWeight: FontWeight.normal,
@@ -17,6 +20,9 @@ final darkTheme = ThemeData(
     textColor: Colors.white,
   ),
   appBarTheme: const AppBarTheme(
-    backgroundColor: Colors.amber,
+      iconTheme: IconThemeData(
+      )
+
+    // backgroundColor: p
   ),
 );

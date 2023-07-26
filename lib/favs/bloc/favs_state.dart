@@ -4,15 +4,20 @@ abstract class FavsState extends Equatable {
   const FavsState();
 }
 
-class FavsInitial extends FavsState {
+class RegistrationState extends FavsState {
+  @override
+  List<Object?> get props => [];
+}
+
+class AllFavsLoading extends FavsState {
   @override
   List<Object?> get props => [];
 }
 
 class AllFavsLoadSuccess extends FavsState {
-  final List<ImageModel> favImages;
+  final List<ImageModelBase> favImages;
 
-  AllFavsLoadSuccess(this.favImages);
+  const AllFavsLoadSuccess(this.favImages);
 
   @override
   List<Object?> get props => [favImages];
@@ -20,13 +25,14 @@ class AllFavsLoadSuccess extends FavsState {
 
 
 class AddFavSuccess extends FavsState {
-  final ImageModel favImage;
+  final ImageModelBase favImage;
 
   AddFavSuccess(this.favImage);
 
   @override
   List<Object?> get props => [favImage];
 }
+
 
 // class RegisteringServicesState extends FavsState {
 //   @override

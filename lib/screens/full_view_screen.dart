@@ -1,5 +1,6 @@
 import 'package:flickr_viewer/favs/bloc/favs_bloc.dart';
-import 'package:flickr_viewer/models/image_model.dart';
+// import 'package:flickr_viewer/models/image_model.dart';
+import 'package:flickr_viewer/models/image_model_base.dart';
 import 'package:flickr_viewer/repositories/favs_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,9 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class FullViewScreen extends StatelessWidget {
   const FullViewScreen({Key? key, required this.image}) : super(key: key);
 
-  // final favButtonController = ();
-
-  final ImageModel image;
+  final ImageModelBase image;
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +34,15 @@ class FullViewScreen extends StatelessWidget {
                 ),
               ),
             ),
-            floatingActionButton: IconButton.outlined(
+            floatingActionButton: IconButton.filled(
               icon: const Icon(Icons.favorite_border_outlined),
               selectedIcon: const Icon(Icons.g_mobiledata),
-              isSelected: image.isFav == true ? true : false,
+              // isSelected: image.isFav == true ? true : false,
+              isSelected: false,
               onPressed: () {
-                if (image.isFav == false) {
-                  BlocProvider.of<FavsBloc>(context).add(FavAdded(image));
+                // if (image.isFav == false) {
+                if (true) {
+                  BlocProvider.of<FavsBloc>(context).add(FavAddedEvent(image));
                   // context.read<FavsBloc>().add(FavAdded(image));
                 } else {
                   BlocProvider.of<FavsBloc>(context).add(FavRemoved(image.id));
