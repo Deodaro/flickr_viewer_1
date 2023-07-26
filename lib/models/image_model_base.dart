@@ -17,10 +17,11 @@ class ImageModelBase extends HiveObject {
     required this.title,
   });
 
-  factory ImageModelBase.fromJson(Map<String,dynamic> json) {
+  factory ImageModelBase.fromJson(Map<String, dynamic> json) {
     return ImageModelBase(
       id: json['id'],
-      fullUrl: 'https://farm${json['farm']}.staticflickr.com/${json['server']}/${json['id']}_${json['secret']}.jpg',
+      fullUrl:
+          'https://farm${json['farm']}.staticflickr.com/${json['server']}/${json['id']}_${json['secret']}.jpg',
       title: json['title'],
     );
   }

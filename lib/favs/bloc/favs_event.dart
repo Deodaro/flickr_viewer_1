@@ -16,11 +16,6 @@ class FavsLoadingEvent extends FavsEvent {
   List<Object?> get props => [];
 }
 
-// class AddFav extends FavsState {
-//   @override
-//   List<Object?> get props => [];
-// }
-
 class FavAddedEvent extends FavsEvent {
   ImageModelBase favImage;
 

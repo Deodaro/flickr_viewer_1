@@ -8,8 +8,6 @@ import 'package:multi_state_button/multi_state_button.dart';
 class GridControl extends StatelessWidget {
   GridControl({Key? key}) : super(key: key);
 
-  // final int _columnsCount = 2;
-
   static const String _oneColumn = "OneColumn";
   static const String _twoColumns = "TwoColumns";
   static const String _fourColumns = "FourColumns";

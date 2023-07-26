@@ -13,8 +13,6 @@ class FavsBloc extends Bloc<FavsEvent, FavsState> {
   FavsBloc(this._favsRepo) : super(RegistrationState()) {
     on<RegistrationEvent>((event, emit) async {
       await _favsRepo.init();
-      // emit(AllFavsLoadSuccess(favImages))
-      // add(FavsLoadingEvent());
       emit(AllFavsLoading());
     });
 
@@ -23,16 +21,8 @@ class FavsBloc extends Bloc<FavsEvent, FavsState> {
       emit(AllFavsLoadSuccess(images));
     });
 
-    // on<FavAddedEvent>((event, emit) {
-      // final images = _favsRepo.getAllFavImages();
-      // if (images != null) {
-      //   emit(AllFavsLoadSuccess(images));
-      // }
-    // });
-
     on<FavAddedEvent>((event, emit) async {
       _favsRepo.addFavImage(event.favImage);
-      // emit(FavAdded(favImage))
       add(FavsLoadingEvent());
     });
 

@@ -7,7 +7,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(ImageModelBaseAdapter());
-  // await Hive.openBox('favsBox');
 
   runApp(const App());
 }

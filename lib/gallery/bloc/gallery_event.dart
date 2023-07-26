@@ -13,20 +13,6 @@ class SearchStartEvent extends GalleryEvent {
   List<Object?> get props => [query];
 }
 
-// class ImagesLoaded extends GalleryEvent {
-//   @override
-//   List<Object?> get props => [];
-// }
-
-// class ToggleGridEvent extends GalleryEvent {
-//   final int value;
-//
-//   ToggleGridEvent(this.value);
-//
-//   @override
-//   List<Object?> get props => [value];
-// }
-
 class RegisterServicesEvent extends GalleryEvent {
   @override
   List<Object?> get props => [];
